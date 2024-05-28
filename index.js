@@ -10,6 +10,8 @@ const port = 3000;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+//Connect to the databse
 const db = new pg.Client({
     user: "postgres",
     host: "localhost",
