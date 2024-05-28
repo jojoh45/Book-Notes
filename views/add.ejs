@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Edit Book Note</title>
+
+    <style>
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      } 
+      
+      body {
+        background-color: #f7f9fc;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #444;
+      }
+
+      input, textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1em;
+        outline: none;
+        transition: border 0.3s;
+      }
+
+      input:focus, textarea:focus {
+          border-color: #888;
+      }
+
+      a,button {
+        text-decoration: none;
+        background-color: #888;
+        color: #fff;
+        padding: 10px;
+        font-size: 1em;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+
+      button:hover {
+        background-color: #818181;
+        transition: 0.3s;
+      }
+
+      .editHeading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+    </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="editHeading">
+      <h1>
+        <%= heading %>
+      </h1>
+    </div>
+
+    <form action="/" method="get">
+      <button class="home-button" type="submit">Home</button>
+    </form>
+
+    <% if (locals.books) {%>
+      <form id="editBook" action="/edit/<%= books.id %>" method="POST" class="row g-3">
+        <label for="" class="form-label">Title: </label>
+          <input type="text" name="title" value="<%= books.title %>" autofocus="true">
+        <label>Author: </label>
+          <input type="text" name="author" value="<%= books.author %>">
+        <label>Date Read: </label>
+          <input type="date" name="date_read" value="<%= books.date_read%>">
+        <label>Rating: </label>
+          <input type="number" name="rating" value="<%= books.rating %>">
+        <label>Description: </label>
+          <textarea name="description"><%= books.description %></textarea>
+        <button type="submit"><%= submit %></button>
+      </form>
+
+    <% } else {%>
+        <form id="newBookForm" action="/submit" method="POST" class="row g-3 needs-validation">
+          <label for="validationCustom01" class="form-label"> Title: </label>
+            <input type="text" name="title" placeholder="Enter Title" required autofocus="true" class="form-control" id="validationCustom01">
+          <label for=""> Author: </label>
+            <input type="text" name="author" placeholder="Enter Author" required>
+          <label for=""> Date: </label>
+            <input type="date" name="date_read" required>
+          <label for=""> Rating: </label>
+            <input type="number" name="rating" inputmode="numeric" required placeholder="Enter Rating" max="10" min="0">
+          <label for=""> Description: </label>
+            <textarea name="description" required placeholder="This book was ..."></textarea>
+          <button id="createaBookNote" type="submit"><%= submit %></button>
+        </form>
+      <% } %>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>
