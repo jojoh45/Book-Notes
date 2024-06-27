@@ -1,6 +1,6 @@
-# Book Cover Fetcher
+# Book Notes
 
-Book Cover Fetcher is a web application that allows users to manage their book notes and fetch book covers from the Open Library Covers API. Users can add, edit, and delete book entries, and search for book covers by entering a book title.
+Book Notes is a web application that allows users to manage their book notes and fetch book covers from the Open Library Covers API. Users can add, edit, and delete book entries, and search for book covers by entering a book title.
 
 ## Features
 
